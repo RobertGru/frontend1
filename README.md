@@ -1,7 +1,9 @@
 This is the frontend for Readable project at Udacity Nano Degree.
 
 Instructions to run, start backend api-server with 'node server' default port 3001:
+
 npm install
+
 npm start
 
 
