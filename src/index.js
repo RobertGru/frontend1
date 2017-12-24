@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-//import { Router } from 'react-router-dom'
 import { createStore, applyMiddleware, compose } from 'redux'
 import appReducer from './reducers'
 import { Provider } from 'react-redux'
-
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import thunkMiddleware from 'redux-thunk'
+import App from './App'
+import registerServiceWorker from './registerServiceWorker'
+import { BrowserRouter } from 'react-router-dom'
 
 const logger = store => next => action => {
   console.group(action.type)
@@ -21,12 +21,14 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const store = createStore(
     appReducer,
-    composeEnhancers(logger)
+    composeEnhancers(applyMiddleware(thunkMiddleware))
 )
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )

@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 function Header() {
     return (
         <div className="header">
-            <h1>READABLE</h1>
+            <Link
+              to="/">
+              <h1>READABLE</h1>
+            </Link>
             <div className="home-link">
 
             </div>
